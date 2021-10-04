@@ -57,3 +57,9 @@ textarea {
     justify-content: space-between;
     color: #cbb2ab;
 }
+@media  screen and (max-width:795px) {
+  .timer{
+    display:block;
+    text-align: center;
+  }
+}
