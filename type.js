@@ -17,7 +17,7 @@ const sec = document.getElementById("sec");
 const timeover = document.querySelector(".timeover");
 const result = document.querySelector(".result");
 const timer = document.querySelector(".timer");
-textarea.addEventListener("click", start);
+textarea.addEventListener("keydown", start);
 let newtext = [];
 let minute = 1;
 let second = 60;
@@ -31,8 +31,11 @@ function random() {
   paragragh.innerHTML = randomtxt;
 }
 function start() {
-  clearInterval(Interval);
-  Interval = setInterval(starttime, 999);
+
+  if(minute == 1){
+    Interval = setInterval(starttime, 999);
+
+  }
 }
 
 function starttime() {
