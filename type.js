@@ -21,6 +21,7 @@ textarea.addEventListener("keydown", start);
 let newtext = [];
 let minute = 1;
 let second = 60;
+
 let Interval;
 
 function checkspeed() {}
@@ -32,7 +33,7 @@ function random() {
 }
 function start() {
 
-  if(minute == 1){
+  if(textarea.value.length == 0){
     Interval = setInterval(starttime, 999);
 
   }
