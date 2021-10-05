@@ -3,14 +3,14 @@
   margin: 0;
   box-sizing: border-box;
 }
-body{
-    background-color: #171923;
-    font-family: Roboto, Arial, Tahoma, sans-serif;
+body {
+  background-color: #171923;
+  font-family: Roboto, Arial, Tahoma, sans-serif;
 }
-header{
-    color: #cbb2ab;
-    text-align: center;
-    margin-top: 5px;
+header {
+  color: #cbb2ab;
+  text-align: center;
+  margin-top: 5px;
 }
 .container {
   width: 70%;
@@ -38,7 +38,6 @@ textarea {
   resize: none;
   border-radius: 5px;
   font-size: 1.5rem;
-  
 }
 .timer h1,
 .timer {
@@ -48,18 +47,18 @@ textarea {
   font-size: 2rem;
   color: #cbb2ab;
 }
-.timeover{
-    display: none;
+.timeover {
+  display: none;
 }
-.show{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: #cbb2ab;
+.show {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #cbb2ab;
 }
-@media  screen and (max-width:795px) {
-  .timer{
-    display:block;
+@media screen and (max-width: 795px) {
+  .timer {
+    display: block;
     text-align: center;
   }
 }
