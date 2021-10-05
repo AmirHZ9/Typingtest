@@ -21,7 +21,7 @@ textarea.addEventListener("keydown", start);
 let newtext = [];
 let minute = 1;
 let second = 60;
-
+var called = 0
 let Interval;
 
 function checkspeed() {}
@@ -32,11 +32,11 @@ function random() {
   paragragh.innerHTML = randomtxt;
 }
 function start() {
-
-  if(textarea.value.length == 0){
+  if(called == 0 ){
     Interval = setInterval(starttime, 999);
-
+    
   }
+  called++
 }
 
 function starttime() {
@@ -54,21 +54,24 @@ function starttime() {
   if (minute > 9) {
     min.innerHTML = minute;
   }
+  
   if (second == 0) {
     sec.innerText = "00";
     timeover.style.display = "block";
     result.innerHTML = `Your typing speed is : ${word} WPM`;
     document.getElementById('input-text').disabled=true
     clearInterval(Interval);
-    if(textarea.value == ''){
+    if(textarea.value == '' || textarea.value != paragragh.innerText){
       result.innerHTML = `Your typing speed is : 0 WPM`;
     } 
   }
+  
+  
   if (paragragh.innerHTML == textarea.value) {
     random();
     textarea.value = " ";
   }
-  
+  console.log(called)
 }
 
 random();
