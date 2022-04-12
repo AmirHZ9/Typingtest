@@ -19,7 +19,7 @@ const timer = document.querySelector(".timer");
 qoute.addEventListener("input", start);
 let minute = 1;
 let second = 60;
-var called = 0;
+var called = true;
 let Interval;
 
 function random() {
@@ -33,10 +33,10 @@ function random() {
   });
 }
 function start() {
-  if (called == 0) {
-    Interval = setInterval(starttime, 999);
+  if (called) {
+    Interval = setInterval(starttime, 1000);
+    called=false;
   }
-  called++;
 
   //letters check
   const allSpanChracter = document.querySelectorAll("span");
