@@ -11,36 +11,54 @@ const text = [
   "A sales farmer is someone who creates sales demand through activities that directly influence and alter the buying process",
 ];
 const paragragh = document.querySelector(".paragragh");
-const textarea = document.getElementById("input-text");
+const qoute = document.getElementById("input-text");
 const min = document.getElementById("min");
 const sec = document.getElementById("sec");
 const timeover = document.querySelector(".timeover");
-const result = document.querySelector(".result");
 const timer = document.querySelector(".timer");
-textarea.addEventListener("keydown", start);
-let newtext = [];
+qoute.addEventListener("input", start);
 let minute = 1;
-let second = 10;
+let second = 60;
 var called = 0;
 let Interval;
 
-function checkspeed() {}
 function random() {
   randomtxt = text[Math.floor(Math.random() * text.length)];
-  newtext.push(paragragh.innerText);
-  word = newtext.toString().split(" ");
-  paragragh.innerHTML = randomtxt;
-  
-  
+  word = randomtxt.split("");
+  paragragh.innerHTML = "";
+  word.map((item) => {
+    const chracterSpan = document.createElement("span");
+    chracterSpan.innerText = item;
+    paragragh.append(chracterSpan);
+  });
 }
 function start() {
   if (called == 0) {
     Interval = setInterval(starttime, 999);
   }
   called++;
+
+  //letters check
+  const allSpanChracter = document.querySelectorAll("span");
+  const textChracter = qoute.value.split("");
+
+  allSpanChracter.forEach((item, index) => {
+    const chracter = textChracter[index];
+    if (chracter == null) {
+      item.classList.remove("incorrect");
+      item.classList.remove("correct");
+    } else if (chracter == item.innerText) {
+      item.classList.add("correct");
+      item.classList.remove("incorrect");
+    } else {
+      item.classList.add("incorrect");
+      item.classList.remove("correct");
+    }
+  });
 }
 
-function starttime(item) {
+//Timer
+function starttime() {
   second--;
   minute--;
   if (second > 9) {
@@ -55,24 +73,20 @@ function starttime(item) {
   if (minute > 9) {
     min.innerHTML = minute;
   }
-  
+
   if (second == 0) {
     sec.innerText = "00";
+
     timeover.style.display = "block";
-    result.innerHTML = `Your typing speed is : ${word.length} WPM`;
+
     document.getElementById("input-text").disabled = true;
     clearInterval(Interval);
-    if (word == 0) {
-      result.innerHTML = `Your typing speed is : 0 WPM`;
-    }
   }
 
-  if (paragragh.innerHTML == textarea.value) {
+  if (paragragh.innerText == qoute.value) {
     random();
-    textarea.value = " ";
+    qoute.value = "";
   }
-  console.log(word)
-
 }
 
 random();

@@ -56,6 +56,12 @@ textarea {
   justify-content: space-between;
   color: #cbb2ab;
 }
+.correct{
+  color: green;
+}
+.incorrect{
+  color: red;
+}
 @media screen and (max-width: 795px) {
   .timer {
     display: block;
