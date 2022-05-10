@@ -24,9 +24,9 @@ let Interval;
 
 function random() {
   randomtxt = text[Math.floor(Math.random() * text.length)];
-  word = randomtxt.split("");
+  letter = randomtxt.split("");
   paragragh.innerHTML = "";
-  word.map((item) => {
+  letter.map((item) => {
     const chracterSpan = document.createElement("span");
     chracterSpan.innerText = item;
     paragragh.append(chracterSpan);
@@ -37,11 +37,9 @@ function start() {
     Interval = setInterval(starttime, 1000);
     called=false;
   }
-
   //letters check
   const allSpanChracter = document.querySelectorAll("span");
   const textChracter = qoute.value.split("");
-
   allSpanChracter.forEach((item, index) => {
     const chracter = textChracter[index];
     if (chracter == null) {
@@ -55,7 +53,12 @@ function start() {
       item.classList.remove("correct");
     }
   });
+  if (paragragh.innerText == qoute.value) {
+    random();
+    qoute.value = "";
+  }
 }
+
 
 //Timer
 function starttime() {
@@ -83,10 +86,7 @@ function starttime() {
     clearInterval(Interval);
   }
 
-  if (paragragh.innerText == qoute.value) {
-    random();
-    qoute.value = "";
-  }
+  
 }
 
 random();
